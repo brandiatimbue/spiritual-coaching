@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spiritual Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d2224;
+    --ink-2: #133033;
+    --ink-3: #1b3e41;
+    --line: rgba(245, 214, 160, 0.14);
+    --cream: #f6ead2;
+    --muted: rgba(246, 234, 210, 0.62);
+    --faint: rgba(246, 234, 210, 0.38);
+    --gold: #e8c78a;
+    --rose: #e4999a;
+    --serif: "Cormorant Garamond", "Iowan Old Style", Palatino, Georgia, serif;
+    --sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ink); color: var(--cream); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(900px 520px at 78% -8%, rgba(232, 199, 138, 0.13), transparent 70%),
+      radial-gradient(700px 600px at -10% 110%, rgba(228, 153, 154, 0.08), transparent 70%);
+  }
+  .wrap { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 36px 40px 80px; }
+  header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .eyebrow { font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: 40px; line-height: 1.05; margin: 6px 0 0; letter-spacing: 0.005em; }
+  nav { display: flex; gap: 4px; background: rgba(0,0,0,0.18); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+  nav button { all: unset; cursor: pointer; padding: 7px 18px; border-radius: 999px; font-size: 13.5px; color: var(--muted); transition: all .2s; }
+  nav button:hover { color: var(--cream); }
+  nav button.on { background: var(--cream); color: var(--ink); font-weight: 500; }
+  section.view { display: none; padding-top: 34px; animation: rise .45s ease both; }
+  section.view.on { display: block; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Today */
+  .hero { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; margin-bottom: 36px; }
+  .hero h2 { font-family: var(--serif); font-weight: 400; font-size: 46px; line-height: 1.08; margin: 8px 0 12px; }
+  .hero p { color: var(--muted); max-width: 560px; margin: 0; }
+  .ring { width: 132px; height: 132px; position: relative; }
+  .ring svg { transform: rotate(-90deg); }
+  .ring .lbl { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
+  .ring .lbl b { font-family: var(--serif); font-size: 34px; font-weight: 500; display: block; line-height: 1; }
+  .ring .lbl span { font-size: 11px; color: var(--faint); letter-spacing: .12em; text-transform: uppercase; }
+  .sessions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .session { background: var(--ink-2); padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 196px; }
+  .session .day { font-size: 12px; color: var(--gold); letter-spacing: .08em; text-transform: uppercase; }
+  .session h3 { font-family: var(--serif); font-weight: 500; font-size: 23px; line-height: 1.15; margin: 2px 0 4px; }
+  .session .note { color: var(--faint); font-size: 13px; }
+  .session .act { margin-top: auto; padding-top: 12px; }
+  .play { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 500; color: var(--ink); background: var(--gold); padding: 8px 16px 8px 10px; border-radius: 999px; transition: transform .15s, background .2s; }
+  .play:hover { background: #f3d9a6; transform: translateY(-1px); }
+  .play i { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; }
+  .play i::after { content: ""; border-left: 7px solid var(--gold); border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; margin-left: 2px; }
+  .play.ghost { background: transparent; color: var(--cream); border: 1px solid var(--line); }
+  .play.ghost i { background: var(--gold); } .play.ghost i::after { border-left-color: var(--ink); }
+  .play.ghost:hover { border-color: var(--gold); }
+  .pending { font-size: 13px; color: var(--faint); font-style: italic; font-family: var(--serif); font-size: 16px; }
+  .next { margin-top: 28px; display: grid; grid-template-columns: 150px 1fr; gap: 28px; padding: 26px 28px; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(120deg, rgba(232,199,138,0.08), transparent 60%); }
+  .next .date { font-family: var(--serif); }
+  .next .date b { display: block; font-size: 54px; font-weight: 400; line-height: .95; }
+  .next .date span { color: var(--muted); font-size: 14px; letter-spacing: .1em; text-transform: uppercase; }
+  .next h3 { font-family: var(--serif); font-weight: 500; font-size: 28px; margin: 4px 0 8px; line-height: 1.15; }
+  .next p { color: var(--muted); margin: 0 0 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 12.5px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+
+  .mantra { margin: 6px 0 44px; padding: 34px 20px 36px; text-align: center; position: relative; }
+  .mantra::before, .mantra::after { content: ""; position: absolute; left: 50%; width: 220px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(232,199,138,0.45), transparent); }
+  .mantra::before { top: 0; } .mantra::after { bottom: 0; }
+  .mantra blockquote { margin: 14px 0 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 27px; line-height: 1.5; color: var(--cream); letter-spacing: 0.01em; }
+
+  /* Class join strip + class mode */
+  .join { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 20px 16px 24px; margin: -18px 0 40px; border-radius: 999px; border: 1px solid var(--line); background: rgba(0,0,0,0.16); }
+  .join.live { border-color: rgba(228,153,154,0.55); background: linear-gradient(90deg, rgba(228,153,154,0.16), rgba(0,0,0,0.1)); }
+  .join .when { display: flex; align-items: center; gap: 14px; }
+  .join .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--faint); }
+  .join.live .pulse { background: var(--rose); animation: pulse 1.8s ease-out infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(228,153,154,0.6); } 100% { box-shadow: 0 0 0 12px rgba(228,153,154,0); } }
+  .join .when b { font-family: var(--serif); font-weight: 500; font-size: 21px; }
+  .join .when span { color: var(--muted); font-size: 13.5px; margin-left: 8px; }
+  .classmode { position: fixed; inset: 0; z-index: 40; background: var(--ink); display: none; grid-template-rows: auto 1fr; }
+  .classmode.on { display: grid; }
+  .cm-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 18px; border-bottom: 1px solid var(--line); }
+  .cm-bar h3 { font-family: var(--serif); font-weight: 500; font-size: 21px; margin: 0; }
+  .cm-bar .acts { display: flex; gap: 8px; align-items: center; }
+  .cm-bar a { color: var(--faint); font-size: 12.5px; text-decoration: none; margin-right: 6px; }
+  .cm-bar a:hover { color: var(--cream); }
+  .cm-body { display: grid; grid-template-columns: 1fr 400px; min-height: 0; transition: grid-template-columns .3s; }
+  .cm-body.wide { grid-template-columns: 1fr 1fr; }
+  .cm-zoom { background: #000; min-height: 0; }
+  .cm-zoom iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .cm-side { border-left: 1px solid var(--line); overflow: auto; padding: 22px 22px 40px; min-height: 0; display: flex; flex-direction: column; }
+  .cm-side.viewing { padding: 0; overflow: hidden; }
+  .cm-side .sec { margin-bottom: 24px; }
+  .cm-side h4 { font-family: var(--serif); font-weight: 500; font-size: 22px; line-height: 1.2; margin: 6px 0 6px; }
+  .cm-side p { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; }
+  .cm-item { all: unset; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--ink-2); margin-bottom: 8px; font-family: var(--serif); font-size: 17px; }
+  .cm-item:hover { border-color: var(--gold); }
+  .cm-item small { font-family: var(--sans); font-size: 11.5px; color: var(--faint); white-space: nowrap; }
+  .cm-viewer { display: flex; flex-direction: column; height: 100%; }
+  .cm-viewer .vh { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  .cm-viewer .vh b { font-family: var(--serif); font-weight: 500; font-size: 17px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cm-viewer iframe { flex: 1; width: 100%; border: 0; background: #fff; }
+  .placeholder { width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; border: 1px dashed var(--line); background: var(--ink-2); display: grid; place-items: center; text-align: center; padding: 30px; box-sizing: border-box; }
+  .placeholder p { margin: 0; color: var(--muted); max-width: 420px; }
+  .placeholder b { display: block; font-family: var(--serif); font-weight: 500; font-size: 24px; color: var(--cream); margin-bottom: 8px; }
+  .cm-side .placeholder { flex: 1; aspect-ratio: auto; border-radius: 0; border: 0; }
+  .cm-mantra { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 16px; line-height: 1.5; text-align: center; padding-top: 18px; margin-top: auto; border-top: 1px solid var(--line); }
+
+  /* Journey */
+  .phase { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 28px 0; border-top: 1px solid var(--line); }
+  .phase:first-child { border-top: 0; padding-top: 0; }
+  .phase .ph h3 { font-family: var(--serif); font-weight: 500; font-size: 25px; margin: 4px 0; line-height: 1.1; }
+  .phase .ph p { color: var(--faint); font-size: 13px; margin: 0; }
+  .wk { display: grid; grid-template-columns: 74px 18px 1fr auto; gap: 14px; align-items: start; padding: 10px 0; }
+  .wk .d { font-size: 13px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+  .wk .dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--faint); margin-top: 7px; justify-self: center; }
+  .wk.done .dot { background: var(--gold); border-color: var(--gold); }
+  .wk.now .dot { background: var(--rose); border-color: var(--rose); box-shadow: 0 0 0 5px rgba(228,153,154,0.18); }
+  .wk .t { font-family: var(--serif); font-size: 19.5px; line-height: 1.25; }
+  .wk .s { color: var(--faint); font-size: 13px; }
+  .wk.brk .t { color: var(--faint); font-style: italic; }
+  .wk .r { display: flex; gap: 6px; padding-top: 2px; }
+  .mini { all: unset; cursor: pointer; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .mini:hover { border-color: var(--gold); color: var(--cream); }
+  .mini.v::before { content: "\25B6  "; font-size: 9px; color: var(--gold); }
+  .wk details { margin-top: 4px; }
+  .wk summary { cursor: pointer; color: var(--faint); font-size: 12.5px; list-style: none; }
+  .wk summary::before { content: "+ "; }
+  .wk details[open] summary::before { content: "\2013  "; }
+  .wk details p { color: var(--muted); font-size: 13.5px; margin: 6px 0 0; max-width: 560px; }
+
+  /* Library */
+  .lib-h { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 16px; }
+  .lib-h h3 { font-family: var(--serif); font-weight: 500; font-size: 28px; margin: 0; }
+  .lib-h span { color: var(--faint); font-size: 13px; }
+  .block { margin-bottom: 48px; }
+  .chakras { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .chakra { border-radius: 16px; padding: 18px 14px 16px; background: var(--ink-2); border: 1px solid var(--line); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .orb { width: 46px; height: 46px; border-radius: 50%; box-shadow: 0 0 26px -2px var(--c); background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--c) 40%, white), var(--c) 70%); }
+  .chakra b { font-family: var(--serif); font-weight: 500; font-size: 19px; }
+  .chakra .mini { width: 100%; text-align: center; box-sizing: border-box; }
+  .chakra-about { margin: 0 0 4px; color: var(--faint); font-size: 12.5px; line-height: 1.45; flex: 1; }
+  .list { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .row { display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: 12px; padding: 13px 18px; border-top: 1px solid var(--line); background: var(--ink-2); transition: background .15s; }
+  .row:first-child { border-top: 0; }
+  .row:hover { background: var(--ink-3); }
+  .row .n { font-family: var(--serif); font-size: 20px; color: var(--gold); }
+  .row .t { font-family: var(--serif); font-size: 19px; }
+  .row .t small { display: block; font-family: var(--sans); font-size: 12px; color: var(--faint); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .doc { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 14px; background: var(--ink-2); border: 1px solid var(--line); cursor: pointer; transition: border-color .2s; }
+  .doc:hover { border-color: var(--gold); }
+  .doc .ic { width: 34px; height: 42px; border-radius: 4px; background: var(--cream); color: var(--ink); font-size: 9px; font-weight: 600; display: grid; place-items: end center; padding-bottom: 5px; }
+  .doc b { font-family: var(--serif); font-weight: 500; font-size: 18.5px; display: block; }
+  .doc span { font-size: 12px; color: var(--faint); }
+  .docs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  /* Theater */
+  .theater { position: fixed; inset: 0; z-index: 50; background: rgba(5, 16, 17, 0.92); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 40px; animation: rise .3s ease both; }
+  .theater.on { display: flex; }
+  .stage { width: min(1100px, 100%); }
+  .stage .bar { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 14px; gap: 20px; }
+  .stage h3 { font-family: var(--serif); font-weight: 500; font-size: 28px; margin: 2px 0 0; }
+  .stage video, .stage iframe { width: 100%; max-height: 74vh; border-radius: 14px; background: #000; border: 0; display: block; }
+  .stage iframe { height: 74vh; background: #fff; }
+  .stage iframe.vid { height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .stage .links { display: flex; gap: 14px; align-items: center; }
+  .stage .links a { color: var(--faint); font-size: 12.5px; text-decoration: none; }
+  .stage .links a:hover { color: var(--cream); }
+  .x { all: unset; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--muted); font-size: 18px; }
+  .x:hover { color: var(--cream); border-color: var(--gold); }
+  .parts { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow" id="course-eyebrow">&nbsp;</div>
+      <h1 id="course-title">Spiritual Coaching</h1>
+    </div>
+    <nav>
+      <button data-v="today" class="on">This week</button>
+      <button data-v="journey">The journey</button>
+      <button data-v="library">Library</button>
+    </nav>
+  </header>
+  <section class="view on" id="today"></section>
+  <section class="view" id="journey"></section>
+  <section class="view" id="library"></section>
+</div>
+
+<div class="classmode" id="classmode">
+  <div class="cm-bar">
+    <div><div class="eyebrow" id="cm-eyebrow">Class in session</div><h3 id="cm-title"></h3></div>
+    <div class="acts">
+      <a id="cm-app" target="_blank" rel="noopener">Open in the Zoom app instead</a>
+      <button class="mini" id="cm-wide">Bigger materials</button>
+      <button class="play ghost" id="cm-leave" style="padding:7px 16px">Leave class mode</button>
+    </div>
+  </div>
+  <div class="cm-body" id="cm-body">
+    <div class="cm-zoom" id="cm-zoom"></div>
+    <div class="cm-side" id="cm-side"></div>
+  </div>
+</div>
+
+<div class="theater" id="theater">
+  <div class="stage">
+    <div class="bar">
+      <div><div class="eyebrow" id="th-eyebrow"></div><h3 id="th-title"></h3></div>
+      <div class="links"><a id="th-src" target="_blank" rel="noopener">Open original</a><button class="x" id="th-x" aria-label="Close">&times;</button></div>
+    </div>
+    <div id="th-body"></div>
+  </div>
+</div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const fmt = (iso, opts) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", opts);
+const addDays = (iso, n) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+let DATA, MEDIA = {};
+
+function reg(file, title, eyebrow, classroomUrl) {
+  const key = "m" + Object.keys(MEDIA).length;
+  MEDIA[key] = { file, title, eyebrow, classroomUrl };
+  return key;
+}
+function playBtn(file, title, eyebrow, url, label = "Play", cls = "play") {
+  if (!file) return "";
+  return `<button class="${cls}" data-m="${reg(file, title, eyebrow, url)}"><i></i>${esc(label)}</button>`;
+}
+function selfStudyFile(ref) {
+  if (!ref) return null;
+  const [kind, i] = ref;
+  if (kind === "chakra") return { file: DATA.library.chakras[i].lesson, title: DATA.library.chakras[i].name + " Chakra", url: DATA.library.chakras[i].lesson.drive_url };
+  const p = DATA.library.master[i];
+  return { file: p.files[0], title: p.title, url: p.classroom_url };
+}
+
+const isPlaceholder = (url) => !url || /^https?:\/\/(www\.)?example\.com\//.test(url);
+// Where a file plays: a Google Drive file id plays in Drive's previewer, a
+// direct video link in a <video>, any other real link in a frame. An entry with
+// neither (or a placeholder example.com link) shows a note instead, so the
+// sample course renders without pointing anywhere.
+function viewerHtml(f, cls = "") {
+  if (f.file_id) return `<iframe class="${cls}" src="https://drive.google.com/file/d/${esc(f.file_id)}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+  const url = f.url || f.drive_url || "";
+  if (!isPlaceholder(url)) {
+    if (/\.(mp4|mov|webm|m4v)(\?|$)/i.test(url)) return `<video src="${esc(url)}" controls autoplay></video>`;
+    return `<iframe class="${cls}" src="${esc(url)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+  }
+  return `<div class="placeholder"><div><b>${esc(f.name || "Sample item")}</b><p>This is a sample entry. Add your own course's link for it in the course data file and it will play here.</p></div></div>`;
+}
+function mtNow() {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: DATA.zoom.timezone, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23", weekday: "short" }).formatToParts(new Date()).map((p) => [p.type, p.value]));
+  return { iso: `${parts.year}-${parts.month}-${parts.day}`, minutes: +parts.hour * 60 + +parts.minute, weekday: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(parts.weekday) };
+}
+function classStatus() {
+  const now = mtNow();
+  for (let ahead = 0; ahead < 8; ahead++) {
+    const iso = addDays(now.iso, ahead), wd = (now.weekday + ahead) % 7;
+    for (const s of DATA.zoom.sessions) {
+      if (s.weekday !== wd) continue;
+      const [h, m] = s.time.split(":").map(Number), start = h * 60 + m;
+      if (ahead === 0 && now.minutes > start + 150) continue;
+      const live = ahead === 0 && now.minutes >= start - 15;
+      return { iso, session: s, live, today: ahead === 0 };
+    }
+  }
+  return null;
+}
+function weekFor(iso) { let w = DATA.weeks[0]; DATA.weeks.forEach((x) => { if (x.sunday <= iso) w = x; }); return w; }
+function joinStrip() {
+  const st = classStatus();
+  if (!st) return "";
+  const w = weekFor(st.iso), topic = st.session.weekday === 0 ? w.lesson : w.workshop;
+  const when = st.live ? "Class is in session" : (st.today ? "Today" : fmt(st.iso, { weekday: "long", month: "short", day: "numeric" })) + " &middot; " + st.session.label + " " + DATA.zoom.timezone_label.replace(" Time", " time");
+  return `<div class="join ${st.live ? "live" : ""}" id="join-class">
+    <div class="when"><div class="pulse"></div><div><b>${when}</b><span>${esc(topic || "")}</span></div></div>
+    <button class="play" id="join-btn"><i></i>Join class here</button>
+  </div>`;
+}
+function sideList() {
+  const st = classStatus(), w = weekFor(st ? st.iso : new Date().toISOString().slice(0, 10));
+  const ss = selfStudyFile(w.self_study_ref), L = DATA.library;
+  const item = (file, title, eyebrow, url, tag) => file ? `<button class="cm-item" data-cm="${reg(file, title, eyebrow, url)}">${esc(title)}<small>${tag}</small></button>` : "";
+  const recs = [w.lesson_recording && item(w.lesson_recording.files[0], w.lesson, "Sunday lesson", w.lesson_recording.classroom_url, "Recording"),
+    w.workshop_recording && item(w.workshop_recording.files[0], w.workshop, "Workshop", w.workshop_recording.classroom_url, "Recording"),
+    ss && item(ss.file, ss.title, "Self-study", ss.url, "Video")].filter(Boolean).join("");
+  return `
+    <div class="sec"><div class="eyebrow">Week ${w.n} &middot; ${fmt(w.sunday, { month: "short", day: "numeric" })}</div>
+      <h4>${esc(w.lesson)}</h4><p>${esc(w.description)}</p>
+      ${w.workshop ? `<p><span style="color:var(--gold)">Wednesday:</span> ${esc(w.workshop)}</p>` : ""}</div>
+    ${recs ? `<div class="sec"><div class="eyebrow">This week's videos</div>${recs}</div>` : ""}
+    <div class="sec"><div class="eyebrow">Manuals</div>${L.manuals.map((p) => item(p.files[0], p.title, "Manual", p.classroom_url, p.files[0].kind.includes("PDF") ? "PDF" : p.files[0].kind.includes("Word") ? "Document" : "Sheet")).join("")}</div>
+    <div class="sec"><div class="eyebrow">Chakra journey</div>${L.chakras.map((c) => item(c.lesson, c.name + " Chakra", "Chakra journey", c.lesson.drive_url, "Lesson")).join("")}</div>
+    ${DATA.mantra ? `<div class="cm-mantra">${DATA.mantra}</div>` : ""}`;
+}
+function openClassMode() {
+  const st = classStatus();
+  $("#cm-title").textContent = st ? (st.session.weekday === 0 ? weekFor(st.iso).lesson : weekFor(st.iso).workshop) : DATA.course.title;
+  $("#cm-eyebrow").textContent = st && st.live ? "Class in session" : "Class room";
+  $("#cm-app").href = DATA.zoom.join_url;
+  $("#cm-app").style.display = isPlaceholder(DATA.zoom.join_url) ? "none" : "";
+  if (!$("#cm-zoom").firstChild) $("#cm-zoom").innerHTML = isPlaceholder(DATA.zoom.web_client_url)
+    ? `<div class="placeholder" style="height:100%;aspect-ratio:auto;border:0;border-radius:0"><div><b>Your class call goes here</b><p>Add your class's Zoom link to the course data file and the live class will open right here.</p></div></div>`
+    : `<iframe src="${esc(DATA.zoom.web_client_url)}" allow="camera; microphone; display-capture; autoplay; fullscreen; clipboard-write" allowfullscreen></iframe>`;
+  showSideList();
+  $("#classmode").classList.add("on");
+}
+function showSideList() { const s = $("#cm-side"); s.classList.remove("viewing"); s.innerHTML = sideList(); }
+function showInSide(key) {
+  const m = MEDIA[key], s = $("#cm-side");
+  s.classList.add("viewing");
+  s.innerHTML = `<div class="cm-viewer"><div class="vh"><button class="mini" id="cm-back">&larr; Back</button><b>${esc(m.title)}</b></div>
+    ${viewerHtml(m.file)}</div>`;
+}
+function leaveClassMode() { $("#cm-zoom").innerHTML = ""; $("#classmode").classList.remove("on"); }
+
+function renderToday() {
+  const today = new Date().toISOString().slice(0, 10);
+  const weeks = DATA.weeks;
+  let idx = 0;
+  weeks.forEach((w, i) => { if (w.sunday <= today) idx = i; });
+  const w = weeks[idx], nx = weeks.slice(idx + 1).find((x) => !x.is_break) || null;
+  const pct = (idx + 1) / weeks.length, C = 2 * Math.PI * 58;
+  const ss = selfStudyFile(w.self_study_ref);
+  const lr = w.lesson_recording, wr = w.workshop_recording;
+  $("#today").innerHTML = `
+    ${DATA.mantra ? `<figure class="mantra" id="course-mantra">
+      <div class="eyebrow">Mantra</div>
+      <blockquote>${DATA.mantra}</blockquote>
+    </figure>` : ""}
+    ${joinStrip()}
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Week of ${fmt(w.sunday, { month: "long", day: "numeric" })}</div>
+        <h2>${esc(w.lesson)}</h2>
+        <p>${esc(w.description)}</p>
+      </div>
+      <div class="ring">
+        <svg width="132" height="132"><circle cx="66" cy="66" r="58" stroke="rgba(245,214,160,0.13)" stroke-width="3" fill="none"/>
+        <circle cx="66" cy="66" r="58" stroke="#e8c78a" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - pct)}"/></svg>
+        <div class="lbl"><div><b>${w.n}</b><span>of ${weeks.length} weeks</span></div></div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <div class="day">Sunday &middot; ${fmt(w.sunday, { month: "short", day: "numeric" })} &middot; Lesson</div>
+        <h3>${esc(w.lesson)}</h3>
+        <div class="act">${lr ? playBtn(lr.files[0], w.lesson, "Sunday lesson", lr.classroom_url, "Watch the recording") : '<span class="pending">Recording not posted yet</span>'}</div>
+      </div>
+      <div class="session">
+        <div class="day">Wednesday &middot; ${fmt(addDays(w.sunday, 3), { month: "short", day: "numeric" })} &middot; Workshop</div>
+        <h3>${esc(w.workshop || "No workshop")}</h3>
+        <div class="act">${wr ? playBtn(wr.files[0], w.workshop, "Wednesday workshop", wr.classroom_url, "Watch the recording") : '<span class="pending">Recording not posted yet</span>'}</div>
+      </div>
+      <div class="session">
+        <div class="day">Self-study &middot; this week</div>
+        <h3>${esc((w.self_study || "").replace(/^Watch /, ""))}</h3>
+        <div class="note">On your own time before next Sunday</div>
+        <div class="act">${ss ? playBtn(ss.file, ss.title, "Self-study", ss.url, "Play video", "play ghost") : ""}</div>
+      </div>
+    </div>
+    ${nx ? `<div class="next">
+      <div class="date"><span>Next Sunday</span><b>${fmt(nx.sunday, { month: "short", day: "numeric" })}</b></div>
+      <div>
+        <div class="eyebrow">Week ${nx.n}</div>
+        <h3>${esc(nx.lesson)}</h3>
+        <p>${esc(nx.description)}</p>
+        <div class="chips">${nx.workshop ? `<span class="chip">Wednesday: ${esc(nx.workshop)}</span>` : ""}${nx.self_study ? `<span class="chip">Self-study: ${esc(nx.self_study.replace(/^Watch /, ""))}</span>` : ""}</div>
+      </div>
+    </div>` : ""}`;
+}
+
+function renderJourney() {
+  // The course's phases come from the data file; without them the journey is one phase.
+  const PHASES = (DATA.phases || [{ name: "The course", sub: "", from: 1, to: DATA.weeks.length }]).map((p) => [p.name, p.sub || "", p.from, p.to]);
+  const today = new Date().toISOString().slice(0, 10);
+  let cur = 0; DATA.weeks.forEach((w, i) => { if (w.sunday <= today) cur = i; });
+  $("#journey").innerHTML = PHASES.map(([name, sub, a, b]) => `
+    <div class="phase">
+      <div class="ph"><div class="eyebrow">Weeks ${a}${b > a ? "&ndash;" + b : ""}</div><h3>${name}</h3><p>${sub}</p></div>
+      <div>${DATA.weeks.slice(a - 1, b).map((w) => {
+        const i = w.n - 1, st = i < cur ? "done" : i === cur ? "now" : "";
+        const ss = selfStudyFile(w.self_study_ref);
+        const btns = [
+          w.lesson_recording ? playBtn(w.lesson_recording.files[0], w.lesson, "Week " + w.n + " lesson", w.lesson_recording.classroom_url, "Lesson", "mini v") : "",
+          w.workshop_recording ? playBtn(w.workshop_recording.files[0], w.workshop, "Week " + w.n + " workshop", w.workshop_recording.classroom_url, "Workshop", "mini v") : "",
+          ss ? playBtn(ss.file, ss.title, "Week " + w.n + " self-study", ss.url, "Self-study", "mini v") : "",
+        ].join("");
+        return `<div class="wk ${st} ${w.is_break ? "brk" : ""}" data-week="${w.n}">
+          <div class="d">${fmt(w.sunday, { month: "short", day: "numeric" })}</div><div class="dot"></div>
+          <div><div class="t">${w.is_break ? "Break week" : esc(w.lesson)}</div>
+            ${w.workshop ? `<div class="s">Wednesday &middot; ${esc(w.workshop)}</div>` : ""}
+            ${w.description ? `<details><summary>About this week</summary><p>${esc(w.description)}</p>${w.self_study ? `<p>Self-study: ${esc(w.self_study)}</p>` : ""}</details>` : ""}
+          </div>
+          <div class="r">${btns}</div>
+        </div>`;
+      }).join("")}</div>
+    </div>`).join("");
+}
+
+function renderLibrary() {
+  const L = DATA.library;
+  const docKind = (f) => f.kind.includes("PDF") ? "PDF" : f.kind.includes("Word") ? "DOC" : "XLS";
+  $("#library").innerHTML = `
+    <div class="block">
+      <div class="lib-h"><h3>Chakra journey</h3><span>Root to crown &middot; lesson and exercises for each</span></div>
+      <div class="chakras">${L.chakras.map((c) => `
+        <div class="chakra" style="--c:${c.color}">
+          <div class="orb"></div><b>${esc(c.name)}</b>
+          ${c.about ? `<p class="chakra-about">${esc(c.about)}</p>` : ""}
+          ${playBtn(c.lesson, c.name + " Chakra", "Chakra journey", c.lesson.drive_url, "Lesson", "mini v")}
+          ${c.exercises ? playBtn(c.exercises, c.name + " Chakra exercises", "Chakra journey", c.exercises.drive_url, "Exercises", "mini v") : ""}
+        </div>`).join("")}</div>
+    </div>
+    <div class="two block">
+      <div>
+        <div class="lib-h"><h3>Practice videos</h3><span>${L.master.length} recorded lessons</span></div>
+        <div class="list">${L.master.map((p) => `
+          <div class="row"><div class="n">${p.num ?? "&#10022;"}</div><div class="t">${esc(p.title)}</div>
+          ${playBtn(p.files[0], p.title, "Practice videos" + (p.num ? " &middot; Lesson " + p.num : ""), p.classroom_url, "Play", "mini v")}</div>`).join("")}
+        </div>
+      </div>
+      <div>
+        <div class="lib-h"><h3>Class recordings</h3><span>Sundays &amp; Wednesdays</span></div>
+        <div class="list">${L.coaching.map((p) => `
+          <div class="row"><div class="n">${p.num ?? "&#10022;"}</div><div class="t">${esc(p.title)}<small>${String(p.num).startsWith("W") ? "Wednesday workshop" : typeof p.num === "number" ? "Sunday lesson" : "Wednesday session"}</small></div>
+          ${playBtn(p.files[0], p.title, "Class recording", p.classroom_url, "Play", "mini v")}</div>`).join("")}
+        </div>
+        <div class="lib-h" style="margin-top:34px"><h3>Manuals</h3><span>Read here</span></div>
+        <div class="docs">${L.manuals.map((p) => { const f = p.files[0]; return `
+          <div class="doc" data-m="${reg(f, p.title, "Manual", p.classroom_url)}"><div class="ic">${docKind(f)}</div><div><b>${esc(p.title)}</b><span>${esc(f.name)}</span></div></div>`; }).join("")}
+        </div>
+      </div>
+    </div>`;
+}
+
+function openMedia(key) {
+  const m = MEDIA[key], f = m.file;
+  $("#th-eyebrow").innerHTML = m.eyebrow;
+  $("#th-title").textContent = m.title;
+  const src = m.classroomUrl || f.drive_url;
+  $("#th-src").href = src;
+  $("#th-src").style.display = isPlaceholder(src) ? "none" : "";
+  $("#th-body").innerHTML = viewerHtml(f, f.kind.includes("Video") ? "vid" : "");
+  $("#theater").classList.add("on");
+}
+function closeMedia() { $("#th-body").innerHTML = ""; $("#theater").classList.remove("on"); }
+
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#join-btn")) return openClassMode();
+  if (e.target.closest("#cm-leave")) return leaveClassMode();
+  if (e.target.closest("#cm-back")) return showSideList();
+  if (e.target.closest("#cm-wide")) { const b = $("#cm-body"); b.classList.toggle("wide"); $("#cm-wide").textContent = b.classList.contains("wide") ? "Bigger Zoom" : "Bigger materials"; return; }
+  const c = e.target.closest("[data-cm]");
+  if (c) return showInSide(c.dataset.cm);
+  const t = e.target.closest("[data-m]");
+  if (t) return openMedia(t.dataset.m);
+  const v = e.target.closest("nav button");
+  if (v) {
+    document.querySelectorAll("nav button").forEach((b) => b.classList.toggle("on", b === v));
+    document.querySelectorAll("section.view").forEach((s) => s.classList.toggle("on", s.id === v.dataset.v));
+  }
+});
+$("#th-x").onclick = closeMedia;
+$("#theater").addEventListener("click", (e) => { if (e.target.id === "theater") closeMedia(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMedia(); });
+setInterval(() => { if (DATA && !$("#classmode").classList.contains("on")) { const j = $("#join-class"); if (j) j.outerHTML = joinStrip(); } }, 60000);
+
+function renderHeader() {
+  const days = [...new Set(DATA.zoom.sessions.map((s) => s.day + "s"))].join(" &amp; ");
+  $("#course-eyebrow").innerHTML = [DATA.teacher ? "With " + esc(DATA.teacher) : "", days].filter(Boolean).join(" &middot; ");
+  $("#course-title").textContent = DATA.course.title || "Spiritual Coaching";
+  document.title = DATA.course.title || "Spiritual Coaching";
+}
+
+fetch("/data.json").then((r) => r.json()).then((d) => { DATA = d; renderHeader(); renderToday(); renderJourney(); renderLibrary(); });
+</script>
+<!--SHELL_PAGE_SCRIPT-->
+</body>
+</html>

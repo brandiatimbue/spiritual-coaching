@@ -1,0 +1,102 @@
+# Machine-readable manifest for this template. The sibling
+# template.md holds the prose, the Requirements list, and the two
+# append-only history logs; this file is authoritative for everything
+# below. Both are generated together -- validate_template.py fails if
+# they disagree.
+format = "v2"
+
+[template]
+slug = "spiritual-coaching"
+title = "Spiritual Coaching"
+description = "A calm home for a coaching certification course: weekly sessions, the full week-by-week journey, a lesson video library and chakra pages, all in one place."
+thumbnail = "template.svg"
+version = "v1"
+
+# How this template is DERIVED from the workspace it came from. An
+# update re-runs this recipe rather than diffing two repos, which is what
+# keeps an exclusion excluded even though the thing still exists upstream.
+[recipe]
+include = ["system/apps/spiritual_class/", "system/supervisord.conf.d/spiritual-class.conf"]
+data_include = []
+# FILL IN: one entry per deliberate exclusion (paths left out, and
+# features stripped from an included path). Leave [] if nothing was.
+exclude = ["the real course content (syllabus, lesson names and descriptions, video and manual links, class call links) in the app's data file"]
+# FILL IN: one entry per published-version modification, stated as a RULE
+# and NEVER the removed value -- the point of a modification is that the
+# value does not ship. e.g. "replace the hardcoded team channel with a
+# neutral default". Leave [] if there were none.
+modification_rules = [
+  "replace all real course content in the app's data file with a made-up sample course of the same shape, using placeholder example.com links and no real course, file, call or message ids",
+  "remove the real teacher's name, course title and course-specific section names from the page, reading title, teacher, phases and mantra from the data file instead",
+  "remove any personal account names and real course ids from every included file",
+]
+
+# Everything an adopter must deal with before this is really theirs.
+# One list -- but each entry's KIND says how it is handled, because the
+# two are handled at different times by different mechanisms:
+#
+#   permission / secret / llm = ACTIVATION. The adopting agent acts on
+#   these FIRST and BY ITSELF, initiating each latchkey permission
+#   request and each secret request before asking the user anything.
+#   Every one of them must have a matching requires_ line in template.md
+#   and vice versa -- the validator checks that, because an adopter once
+#   never got prompted for a permission the app needed.
+#
+#   The [[requirements.secret]] entries below were AGGREGATED from the
+#   included apps' app.toml [[secrets]] and skills' SKILL.md secrets:
+#   declarations, plus every data/.secrets/<file>.env the included
+#   mcp-servers.json and supervisord programs run under. Fix a wrong one
+#   at its declaration, not here.
+#
+#   adaptation = worked through INTERACTIVELY with the user afterwards.
+#   Prose on both sides, so it is not cross-checked.
+#
+# FILL IN, e.g.:
+#   [[requirements.permission]]
+#   scope = "slack-api"
+#   permission = "slack-read-all"
+#
+#   [requirements.llm]
+#   method = "keyed"   # keyed (an API key, e.g. ANTHROPIC_API_KEY) | keyless (a subscription CLI, e.g. claude -p)
+#
+#   [[requirements.adaptation]]
+#   summary = "the digest channel is hardcoded"
+#   resolution = "ask the user which channel to watch"
+[requirements]
+
+[[requirements.adaptation]]
+summary = "the course content is a made-up sample course"
+resolution = "fill the app's assets/mock_data.json with the user's own course (title, teacher, class times, weeks, phases, library, call link), from their syllabus or a description; or repurpose it for whatever they want to track"
+
+# What the included code needs INSTALLED. apt takes bare names: versions
+# are a function of the apt snapshot timestamp, so replaying names at the
+# adopter's timestamp yields versions consistent with the rest of their
+# environment. The other sources are not snapshot-pinned, so for them the
+# recorded version IS the pin (name = version).
+#
+# FILL IN from what the included code actually needs, e.g.:
+#   apt = ["poppler-utils"]
+#   [environment.npm_global]
+#   "@slack/cli" = "2.1.0"
+#   [environment.uv_tools]
+#   yt-dlp = "2026.7.1"
+#   [environment.cargo_crates]
+#   fd-find = "9.0.0"
+#
+# For an install with no package database (a URL-fetched binary, a browser),
+# ship a system/scripts/env.d/<NNNN>-<slug>-<name>.sh unit with NNNN >= 2000,
+# include it in the recipe above, and list it in env_d_units.
+[environment]
+apt = []
+env_d_units = []
+
+# Templates this agent used on the way to this one, oldest first.
+# A new manifest overrides its predecessor rather than accumulating
+# beside it; the commit hash is what keeps the superseded manifest
+# retrievable in the repo where it is authoritative.
+
+[[lineage]]
+slug = "inbox-digest-review"
+repo_url = "https://github.com/imbue-ai/inbox-digest-review-mind-template"
+commit = "0ed139f04fced96fb0e1a7fa01affa12957f8a0c"
+used_on = "2026-10-08"

@@ -1,0 +1,546 @@
+{
+  "course": {
+    "title": "Soulful Coaching Certification",
+    "course": "https://example.com/sample-course/classroom",
+    "schedule_file": "https://example.com/sample-course/files/schedule"
+  },
+  "teacher": "Maya Ellery",
+  "mantra": "Lokah Samastah Sukhino Bhavantu<br>May all beings everywhere<br>be happy and free",
+  "phases": [
+    {
+      "name": "Foundations",
+      "sub": "Intentions, presence and listening",
+      "from": 1,
+      "to": 3
+    },
+    {
+      "name": "Energy &amp; insight",
+      "sub": "The energy body and the chakras",
+      "from": 4,
+      "to": 5
+    },
+    {
+      "name": "The coaching craft",
+      "sub": "Questions, sessions, celebration",
+      "from": 6,
+      "to": 8
+    }
+  ],
+  "weeks": [
+    {
+      "n": 1,
+      "sunday": "2026-11-01",
+      "lesson": "Welcome and Intentions",
+      "workshop": "Finding Your Inner Voice",
+      "self_study": "Watch Grounding Meditation",
+      "self_study_ref": [
+        "master",
+        0
+      ],
+      "description": "Meet the group, set your intentions for the course, and learn what a coach does (and does not do).",
+      "is_break": false,
+      "lesson_recording": {
+        "id": "sample-rec-1",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-1",
+        "files": [
+          {
+            "name": "lesson-1-welcome.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/lesson-1"
+          }
+        ],
+        "title": "Lesson 1: Welcome and Intentions"
+      },
+      "workshop_recording": {
+        "id": "sample-rec-w1",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-w1",
+        "files": [
+          {
+            "name": "workshop-1-inner-voice.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/workshop-1"
+          }
+        ],
+        "title": "Workshop 1: Finding Your Inner Voice"
+      }
+    },
+    {
+      "n": 2,
+      "sunday": "2026-11-08",
+      "lesson": "Presence and Deep Listening",
+      "workshop": "Listening Practice in Pairs",
+      "self_study": "Watch Breath Awareness",
+      "self_study_ref": [
+        "master",
+        1
+      ],
+      "description": "Practice listening without fixing, and notice what changes when someone feels truly heard.",
+      "is_break": false,
+      "lesson_recording": {
+        "id": "sample-rec-2",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-2",
+        "files": [
+          {
+            "name": "lesson-2-listening.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/lesson-2"
+          }
+        ],
+        "title": "Lesson 2: Presence and Deep Listening"
+      },
+      "workshop_recording": {
+        "id": "sample-rec-w2",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-w2",
+        "files": [
+          {
+            "name": "workshop-2-pairs.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/workshop-2"
+          }
+        ],
+        "title": "Workshop 2: Listening Practice in Pairs"
+      }
+    },
+    {
+      "n": 3,
+      "sunday": "2026-11-15",
+      "lesson": "Beliefs, Stories and Change",
+      "workshop": "Q&A and Open Practice",
+      "self_study": "Watch Root Chakra lesson",
+      "self_study_ref": [
+        "chakra",
+        0
+      ],
+      "description": "Explore how the stories we tell ourselves shape what feels possible, and how to gently question them.",
+      "is_break": false,
+      "lesson_recording": {
+        "id": "sample-rec-3",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-3",
+        "files": [
+          {
+            "name": "lesson-3-beliefs.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/lesson-3"
+          }
+        ],
+        "title": "Lesson 3: Beliefs, Stories and Change"
+      },
+      "workshop_recording": null
+    },
+    {
+      "n": 4,
+      "sunday": "2026-11-22",
+      "lesson": "The Energy Body",
+      "workshop": "Chakra Check-In",
+      "self_study": "Watch Sacral Chakra lesson",
+      "self_study_ref": [
+        "chakra",
+        1
+      ],
+      "description": "An introduction to the seven chakras and a simple way to check in with each one.",
+      "is_break": false,
+      "lesson_recording": null,
+      "workshop_recording": null
+    },
+    {
+      "n": 5,
+      "sunday": "2026-11-29",
+      "lesson": "Break",
+      "workshop": "",
+      "self_study": "Watch Journaling for Clarity",
+      "self_study_ref": [
+        "master",
+        2
+      ],
+      "description": "",
+      "is_break": true,
+      "lesson_recording": null,
+      "workshop_recording": null
+    },
+    {
+      "n": 6,
+      "sunday": "2026-12-06",
+      "lesson": "Asking Powerful Questions",
+      "workshop": "Coaching Triads",
+      "self_study": "Watch Gentle Movement Flow",
+      "self_study_ref": [
+        "master",
+        3
+      ],
+      "description": "Open questions, silence, and following the client's energy rather than your own agenda.",
+      "is_break": false,
+      "lesson_recording": null,
+      "workshop_recording": null
+    },
+    {
+      "n": 7,
+      "sunday": "2026-12-13",
+      "lesson": "Holding a Full Session",
+      "workshop": "Practice Sessions with Feedback",
+      "self_study": "Watch Building a Daily Practice",
+      "self_study_ref": [
+        "master",
+        4
+      ],
+      "description": "Put it all together: opening, exploring, committing to action, and closing a session with care.",
+      "is_break": false,
+      "lesson_recording": null,
+      "workshop_recording": null
+    },
+    {
+      "n": 8,
+      "sunday": "2026-12-20",
+      "lesson": "Celebration and Next Steps",
+      "workshop": "",
+      "self_study": "",
+      "self_study_ref": null,
+      "description": "Look back on the journey, share what you learned, and plan how you will keep coaching.",
+      "is_break": false,
+      "lesson_recording": null,
+      "workshop_recording": null
+    }
+  ],
+  "library": {
+    "coaching": [
+      {
+        "id": "sample-rec-1",
+        "title": "Welcome and Intentions",
+        "num": 1,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-1",
+        "files": [
+          {
+            "name": "lesson-1-welcome.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/lesson-1"
+          }
+        ]
+      },
+      {
+        "id": "sample-rec-w1",
+        "title": "Finding Your Inner Voice",
+        "num": "W1",
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-w1",
+        "files": [
+          {
+            "name": "workshop-1-inner-voice.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/workshop-1"
+          }
+        ]
+      },
+      {
+        "id": "sample-rec-2",
+        "title": "Presence and Deep Listening",
+        "num": 2,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-2",
+        "files": [
+          {
+            "name": "lesson-2-listening.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/lesson-2"
+          }
+        ]
+      },
+      {
+        "id": "sample-rec-w2",
+        "title": "Listening Practice in Pairs",
+        "num": "W2",
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-w2",
+        "files": [
+          {
+            "name": "workshop-2-pairs.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/workshop-2"
+          }
+        ]
+      },
+      {
+        "id": "sample-rec-3",
+        "title": "Beliefs, Stories and Change",
+        "num": 3,
+        "classroom_url": "https://example.com/sample-course/posts/sample-rec-3",
+        "files": [
+          {
+            "name": "lesson-3-beliefs.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/lesson-3"
+          }
+        ]
+      }
+    ],
+    "master": [
+      {
+        "id": "sample-prac-1",
+        "title": "Grounding Meditation",
+        "num": 1,
+        "classroom_url": "https://example.com/sample-course/posts/sample-prac-1",
+        "files": [
+          {
+            "name": "grounding-meditation.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/practice-1"
+          }
+        ]
+      },
+      {
+        "id": "sample-prac-2",
+        "title": "Breath Awareness",
+        "num": 2,
+        "classroom_url": "https://example.com/sample-course/posts/sample-prac-2",
+        "files": [
+          {
+            "name": "breath-awareness.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/practice-2"
+          }
+        ]
+      },
+      {
+        "id": "sample-prac-3",
+        "title": "Journaling for Clarity",
+        "num": 3,
+        "classroom_url": "https://example.com/sample-course/posts/sample-prac-3",
+        "files": [
+          {
+            "name": "journaling.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/practice-3"
+          }
+        ]
+      },
+      {
+        "id": "sample-prac-4",
+        "title": "Gentle Movement Flow",
+        "num": 4,
+        "classroom_url": "https://example.com/sample-course/posts/sample-prac-4",
+        "files": [
+          {
+            "name": "movement-flow.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/practice-4"
+          }
+        ]
+      },
+      {
+        "id": "sample-prac-5",
+        "title": "Building a Daily Practice",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-prac-5",
+        "files": [
+          {
+            "name": "daily-practice.mp4",
+            "kind": "Video",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/videos/practice-5"
+          }
+        ]
+      }
+    ],
+    "chakras": [
+      {
+        "name": "Root",
+        "color": "#B4523E",
+        "lesson": {
+          "name": "Root chakra lesson.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-root-lesson"
+        },
+        "exercises": {
+          "name": "Root chakra exercises.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-root-exercises"
+        },
+        "about": "Safety, grounding and belonging. Feeling secure in your body and in the world."
+      },
+      {
+        "name": "Sacral",
+        "color": "#D2793F",
+        "lesson": {
+          "name": "Sacral chakra lesson.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-sacral-lesson"
+        },
+        "exercises": {
+          "name": "Sacral chakra exercises.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-sacral-exercises"
+        },
+        "about": "Creativity, pleasure and emotion. The flow of feeling, desire and connection."
+      },
+      {
+        "name": "Solar Plexus",
+        "color": "#C9A13B",
+        "lesson": {
+          "name": "Solar Plexus chakra lesson.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-solar-plexus-lesson"
+        },
+        "exercises": {
+          "name": "Solar Plexus chakra exercises.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-solar-plexus-exercises"
+        },
+        "about": "Personal power, confidence and will. Trusting yourself and taking action."
+      },
+      {
+        "name": "Heart",
+        "color": "#6F8F5E",
+        "lesson": {
+          "name": "Heart chakra lesson.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-heart-lesson"
+        },
+        "exercises": {
+          "name": "Heart chakra exercises.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-heart-exercises"
+        },
+        "about": "Love, compassion and forgiveness. Giving and receiving love, for yourself and others."
+      },
+      {
+        "name": "Throat",
+        "color": "#4F8296",
+        "lesson": {
+          "name": "Throat chakra lesson.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-throat-lesson"
+        },
+        "exercises": {
+          "name": "Throat chakra exercises.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-throat-exercises"
+        },
+        "about": "Expression and truth. Speaking honestly and being heard."
+      },
+      {
+        "name": "Third Eye",
+        "color": "#5B5A8E",
+        "lesson": {
+          "name": "Third Eye chakra lesson.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-third-eye-lesson"
+        },
+        "exercises": {
+          "name": "Third Eye chakra exercises.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-third-eye-exercises"
+        },
+        "about": "Intuition, insight and inner vision. Seeing clearly beyond the surface."
+      },
+      {
+        "name": "Crown",
+        "color": "#8A6A9C",
+        "lesson": {
+          "name": "Crown chakra lesson.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-crown-lesson"
+        },
+        "exercises": {
+          "name": "Crown chakra exercises.mp4",
+          "kind": "Video",
+          "file_id": "",
+          "drive_url": "https://example.com/sample-course/videos/chakra-crown-exercises"
+        },
+        "about": "Spiritual connection and higher awareness. A sense of oneness."
+      }
+    ],
+    "manuals": [
+      {
+        "id": "sample-man-1",
+        "title": "Course Handbook",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-man-1",
+        "files": [
+          {
+            "name": "Course Handbook.pdf",
+            "kind": "PDF",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/files/handbook"
+          }
+        ]
+      },
+      {
+        "id": "sample-man-2",
+        "title": "Coaching Workbook",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-man-2",
+        "files": [
+          {
+            "name": "Coaching Workbook.docx",
+            "kind": "Microsoft Word",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/files/workbook"
+          }
+        ]
+      },
+      {
+        "id": "sample-man-3",
+        "title": "Schedule and Curriculum",
+        "num": null,
+        "classroom_url": "https://example.com/sample-course/posts/sample-man-3",
+        "files": [
+          {
+            "name": "Schedule and Curriculum.xlsx",
+            "kind": "Microsoft Excel",
+            "file_id": "",
+            "drive_url": "https://example.com/sample-course/files/schedule"
+          }
+        ]
+      }
+    ]
+  },
+  "zoom": {
+    "meeting_id": "",
+    "join_url": "https://example.com/sample-course/join-class",
+    "web_client_url": "https://example.com/sample-course/join-class",
+    "source": "Sample course data -- replace with your own course.",
+    "sessions": [
+      {
+        "day": "Sunday",
+        "weekday": 0,
+        "time": "17:00",
+        "label": "5:00 pm"
+      },
+      {
+        "day": "Wednesday",
+        "weekday": 3,
+        "time": "18:30",
+        "label": "6:30 pm"
+      }
+    ],
+    "timezone": "America/Denver",
+    "timezone_label": "Mountain Time"
+  }
+}
